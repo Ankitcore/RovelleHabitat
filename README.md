@@ -326,12 +326,6 @@ Deploy Rovelle Habitat instantly to Vercel with automatic continuous integration
 - **GitHub Profile:** [github.com/Ankitcore](https://github.com/Ankitcore)
 - **LinkedIn Profile:** [linkedin.com/in/ankitcore](https://www.linkedin.com/in/ankitcore/)
 
-### Advisory Office & Contact
-- **Address:** Bokaro, Jharkhand 827010, India
-- **Direct Phone:** [+91 9876543210](tel:+919876543210)
-- **Electronic Mail:** [ankit.vzn@gmail.com](mailto:ankit.vzn@gmail.com)
-- **Operating Hours:** Monday to Saturday, 9:00 AM to 6:00 PM IST (Private viewings arranged strictly by prior appointment).
-
 ---
 
 <p align="center">
