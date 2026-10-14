@@ -323,6 +323,8 @@ Deploy Rovelle Habitat instantly to Vercel with automatic continuous integration
 
 ### Design & Development Credit
 **Designed and developed by Ankit Kumar.**
+- **GitHub Profile:** [github.com/Ankitcore](https://github.com/Ankitcore)
+- **LinkedIn Profile:** [linkedin.com/in/ankit-kumar](https://www.linkedin.com/in/ankit-kumar)
 
 ### Advisory Office & Contact
 - **Address:** Bokaro, Jharkhand 827010, India

@@ -7,6 +7,9 @@ export const siteConfig = {
     developerCredit: 'Designed and developed by Ankit Kumar.',
     developerName: 'Ankit Kumar',
     developerEmail: 'ankit.vzn@gmail.com',
+    developerGithub: 'https://github.com/Ankitcore',
+    developerLinkedin: 'https://www.linkedin.com/in/ankit-kumar',
+    repositoryUrl: 'https://github.com/Ankitcore/RovelleHabitat',
   },
   contact: {
     email: 'ankit.vzn@gmail.com',
