@@ -29,13 +29,16 @@ export const metadata: Metadata = {
     'Curated residential property showcase and architectural web experience presenting contemporary residences with spatial precision, natural illumination, and verified floor plans.',
   authors: [{ name: 'Ankit Kumar', url: 'https://rovellehabitat.com' }],
   creator: 'Ankit Kumar',
-  publisher: 'Rovelle Habitat',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   openGraph: {
     type: 'website',
@@ -75,7 +78,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="flex min-h-screen flex-col font-sans bg-white text-rovelle-charcoal antialiased">
         {/* Skip to Main Content Link for Accessibility */}
