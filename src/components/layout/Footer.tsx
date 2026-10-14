@@ -18,18 +18,18 @@ export function Footer() {
               className="inline-flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-rovelle-slate"
               aria-label="Rovelle Habitat homepage"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-rovelle-slate text-white shrink-0">
+              <div className="flex h-8 w-8 items-center justify-center rounded-sm overflow-hidden shrink-0 border border-white/10 shadow-2xs">
                 <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
+                  className="h-full w-full"
+                  viewBox="0 0 64 64"
                   fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="square"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect x="3" y="3" width="7" height="18" fill="#FFFFFF" stroke="none" />
-                  <rect x="10" y="3" width="11" height="5" fill="#EEF2F8" stroke="none" />
-                  <rect x="14" y="8" width="7" height="13" fill="#FFFFFF" stroke="none" />
+                  <rect width="64" height="64" rx="12" fill="#202A36" />
+                  <rect x="14" y="14" width="8" height="36" fill="#657DA0" rx="1" />
+                  <rect x="22" y="14" width="28" height="8" fill="#F6F4EF" rx="1" />
+                  <rect x="22" y="28" width="20" height="7" fill="#657DA0" rx="1" />
+                  <rect x="42" y="28" width="8" height="22" fill="#F6F4EF" rx="1" />
                 </svg>
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
