@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { Property } from '@/types/property'
 import { masterAmenities } from '@/data/amenities'
+import { siteConfig } from '@/data/siteConfig'
 import { ResidenceGallery } from '@/components/residences/ResidenceGallery'
 import { PropertyEnquiryModal } from '@/components/residences/PropertyEnquiryModal'
 import { ResidenceCard } from '@/components/residences/ResidenceCard'
@@ -317,16 +318,16 @@ export function ResidenceDetailClient({
               </p>
               <div className="mt-4 pt-4 border-t border-rovelle-border space-y-2 text-xs">
                 <a
-                  href="mailto:itsankitkumar405@gmail.com"
+                  href={`mailto:${siteConfig.contact.email}`}
                   className="block font-semibold text-rovelle-charcoal hover:text-rovelle-slate transition-colors underline"
                 >
-                  itsankitkumar405@gmail.com
+                  {siteConfig.contact.email}
                 </a>
                 <a
-                  href="tel:+14158904281"
+                  href={`tel:${siteConfig.contact.phoneRaw}`}
                   className="block text-rovelle-muted hover:text-rovelle-charcoal transition-colors"
                 >
-                  +1 (415) 890-4281
+                  {siteConfig.contact.phone}
                 </a>
               </div>
             </div>

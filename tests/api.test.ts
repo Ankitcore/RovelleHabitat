@@ -19,7 +19,7 @@ describe('Enquiry API Route (/api/enquiry)', () => {
     const req = createJsonRequest({
       fullName: 'Julian Alvarez',
       email: `julian.${Date.now()}@architecture.org`,
-      phone: '+1 415 890 1234',
+      phone: '+91 9876543210',
       propertySlug: 'the-monolith-residence',
       propertyName: 'The Monolith Residence',
       enquiryType: 'viewing',

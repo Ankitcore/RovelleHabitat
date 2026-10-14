@@ -94,9 +94,7 @@ export default function ContactPage() {
                       Advisory Office
                     </span>
                     <p className="text-xs text-rovelle-muted leading-relaxed">
-                      {siteConfig.contact.address.street}
-                      <br />
-                      {siteConfig.contact.address.city}, {siteConfig.contact.address.region} {siteConfig.contact.address.postalCode}
+                      {siteConfig.contact.address.formatted}
                     </p>
                   </div>
                 </div>

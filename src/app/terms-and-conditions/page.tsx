@@ -98,7 +98,7 @@ export default function TermsAndConditionsPage() {
                   {siteConfig.contact.email}
                 </a>
               </p>
-              <p className="text-rovelle-muted">Office: {siteConfig.contact.address.street}, {siteConfig.contact.address.city}, {siteConfig.contact.address.region} {siteConfig.contact.address.postalCode}</p>
+              <p className="text-rovelle-muted">Office: {siteConfig.contact.address.formatted}</p>
             </div>
           </section>
         </div>

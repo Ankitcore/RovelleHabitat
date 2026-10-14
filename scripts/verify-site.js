@@ -180,8 +180,8 @@ async function runVerification() {
   // D. Contact Form Submission
   await page.goto(`${BASE_URL}/contact`, { waitUntil: 'networkidle0' })
   await page.type('#fullName', 'Ankit Kumar Verification')
-  await page.type('#email', 'itsankitkumar405@gmail.com')
-  await page.type('#phone', '+1 415 890 4281')
+  await page.type('#email', 'ankit.vzn@gmail.com')
+  await page.type('#phone', '+91 9876543210')
   await page.select('#enquiryType', 'viewing')
   await page.type('#message', 'Automated architectural verification enquiry testing end to end transmission.')
 

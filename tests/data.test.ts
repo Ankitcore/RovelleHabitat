@@ -55,9 +55,11 @@ describe('Rovelle Habitat Data & Portfolio Integrity', () => {
     })
   })
 
-  it('verifies creator credit is set to Ankit Kumar', () => {
+  it('verifies creator credit and contact details', () => {
     expect(siteConfig.brand.developerCredit).toBe('Designed and developed by Ankit Kumar.')
     expect(siteConfig.brand.developerName).toBe('Ankit Kumar')
-    expect(siteConfig.contact.email).toBe('itsankitkumar405@gmail.com')
+    expect(siteConfig.contact.email).toBe('ankit.vzn@gmail.com')
+    expect(siteConfig.contact.phone).toBe('+91 9876543210')
+    expect(siteConfig.contact.address.formatted).toBe('Bokaro, Jharkhand 827010, India')
   })
 })

@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
                   {siteConfig.contact.email}
                 </a>
               </p>
-              <p className="text-rovelle-muted">Address: {siteConfig.contact.address.street}, {siteConfig.contact.address.city}, {siteConfig.contact.address.region} {siteConfig.contact.address.postalCode}</p>
+              <p className="text-rovelle-muted">Address: {siteConfig.contact.address.formatted}</p>
             </div>
           </section>
         </div>

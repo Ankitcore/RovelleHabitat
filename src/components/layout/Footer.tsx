@@ -95,7 +95,7 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 shrink-0 text-rovelle-slate mt-0.5" />
                 <span className="leading-snug">
-                  {siteConfig.contact.address.street}, {siteConfig.contact.address.city}, {siteConfig.contact.address.region} {siteConfig.contact.address.postalCode}
+                  {siteConfig.contact.address.formatted}
                 </span>
               </div>
               <div className="flex items-center gap-2.5">

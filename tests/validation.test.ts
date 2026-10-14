@@ -6,7 +6,7 @@ describe('Enquiry Form Validation Schema', () => {
     const input = {
       fullName: 'Elena Rostova',
       email: 'elena@example.com',
-      phone: '+1 415 555 2671',
+      phone: '+91 9876543210',
       propertySlug: 'the-monolith-residence',
       propertyName: 'The Monolith Residence',
       enquiryType: 'viewing',

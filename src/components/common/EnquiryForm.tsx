@@ -118,7 +118,7 @@ export function EnquiryForm({
     } catch {
       setServerStatus({
         type: 'error',
-        message: 'A network error occurred. Please contact our advisory team directly at itsankitkumar405@gmail.com.',
+        message: 'A network error occurred. Please contact our advisory team directly at ankit.vzn@gmail.com.',
       })
     } finally {
       setIsSubmitting(false)

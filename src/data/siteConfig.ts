@@ -6,20 +6,21 @@ export const siteConfig = {
       'Curated residential property showcase and architectural web experience presenting contemporary residences with spatial precision, natural illumination, and verified floor plans.',
     developerCredit: 'Designed and developed by Ankit Kumar.',
     developerName: 'Ankit Kumar',
-    developerEmail: 'itsankitkumar405@gmail.com',
+    developerEmail: 'ankit.vzn@gmail.com',
   },
   contact: {
-    email: 'itsankitkumar405@gmail.com',
-    phone: '+1 (415) 890-4281', // Display format for architectural advisory team
-    phoneRaw: '+14158904281',
+    email: 'ankit.vzn@gmail.com',
+    phone: '+91 9876543210',
+    phoneRaw: '+919876543210',
     address: {
-      street: '420 Montgomery Street, Suite 850',
-      city: 'San Francisco',
-      region: 'CA',
-      postalCode: '94104',
-      country: 'United States',
+      street: 'Bokaro',
+      city: 'Bokaro',
+      region: 'Jharkhand',
+      postalCode: '827010',
+      country: 'India',
+      formatted: 'Bokaro, Jharkhand 827010, India',
     },
-    businessHours: 'Monday to Friday, 9:00 AM to 6:00 PM PST. Private weekend viewings arranged by appointment.',
+    businessHours: 'Monday to Saturday, 9:00 AM to 6:00 PM IST. Private viewings arranged by appointment.',
   },
   navigation: {
     main: [

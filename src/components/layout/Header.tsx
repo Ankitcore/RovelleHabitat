@@ -166,7 +166,7 @@ export function Header() {
             </Link>
           </div>
           <div className="pt-2 text-xs text-rovelle-muted">
-            Direct advisory: <a href="mailto:itsankitkumar405@gmail.com" className="underline hover:text-rovelle-charcoal">itsankitkumar405@gmail.com</a>
+            Direct advisory: <a href={`mailto:${siteConfig.contact.email}`} className="underline hover:text-rovelle-charcoal">{siteConfig.contact.email}</a>
           </div>
         </div>
       </div>

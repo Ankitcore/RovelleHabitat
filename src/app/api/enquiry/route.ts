@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: 'An unexpected server error occurred while processing your enquiry. Please email itsankitkumar405@gmail.com directly.',
+        message: 'An unexpected server error occurred while processing your enquiry. Please email ankit.vzn@gmail.com directly.',
       },
       { status: 500 }
     )
