@@ -1,0 +1,175 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { siteConfig } from '@/data/siteConfig'
+
+export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Prevent background scrolling while mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
+
+  // Handle Escape key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [mobileMenuOpen])
+
+  return (
+    <header className="sticky top-0 z-40 w-full border-b border-rovelle-border bg-white/95 backdrop-blur-sm transition-colors duration-200">
+      <div className="mx-auto flex h-20 max-w-site items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Brand Wordmark */}
+        <Link
+          href="/"
+          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-rovelle-slate"
+          aria-label="Rovelle Habitat homepage"
+        >
+          <div className="flex h-9 w-9 items-center justify-center rounded-sm bg-rovelle-charcoal text-rovelle-ivory">
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="square"
+            >
+              <rect x="3" y="3" width="7" height="18" fill="#657DA0" stroke="none" />
+              <rect x="10" y="3" width="11" height="5" fill="#F6F4EF" stroke="none" />
+              <rect x="14" y="8" width="7" height="13" fill="#657DA0" stroke="none" />
+            </svg>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-sans text-lg font-bold tracking-tight text-rovelle-charcoal transition-colors group-hover:text-rovelle-slate">
+              {siteConfig.brand.name}
+            </span>
+            <span className="text-[10px] uppercase tracking-widest text-rovelle-muted">
+              Architectural Living
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav
+          className="hidden md:flex items-center space-x-1 lg:space-x-2"
+          aria-label="Main Navigation"
+        >
+          {siteConfig.navigation.main.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`px-4 py-2 text-sm font-medium transition-colors duration-150 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rovelle-slate ${
+                  isActive
+                    ? 'text-rovelle-charcoal font-semibold border-b-2 border-rovelle-slate'
+                    : 'text-rovelle-muted hover:text-rovelle-charcoal hover:bg-rovelle-tint-blue'
+                }`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.name}
+              </Link>
+            )
+          })}
+        </nav>
+
+        {/* Action Button */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-1.5 rounded-sm bg-rovelle-charcoal px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors duration-200 hover:bg-rovelle-slate focus:outline-none focus-visible:ring-2 focus-visible:ring-rovelle-slate"
+          >
+            <span>Enquire</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center md:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex items-center justify-center rounded-sm p-2 text-rovelle-charcoal hover:bg-rovelle-tint-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-rovelle-slate"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Close main navigation menu' : 'Open main navigation menu'}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 top-20 z-50 bg-rovelle-charcoal/50 backdrop-blur-xs md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`fixed inset-x-0 top-20 z-50 transform border-b border-rovelle-border bg-white p-6 shadow-lg transition-transform duration-200 ease-in-out md:hidden ${
+          mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+        }`}
+        aria-label="Mobile Navigation"
+      >
+        <div className="flex flex-col space-y-4">
+          {siteConfig.navigation.main.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2 text-base font-medium transition-colors ${
+                  isActive
+                    ? 'text-rovelle-slate font-semibold'
+                    : 'text-rovelle-charcoal hover:text-rovelle-slate'
+                }`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.name}
+              </Link>
+            )
+          })}
+          <div className="pt-4 border-t border-rovelle-border">
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex w-full items-center justify-center gap-2 rounded-sm bg-rovelle-charcoal py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-rovelle-slate"
+            >
+              <span>Enquire About a Property</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="pt-2 text-xs text-rovelle-muted">
+            Direct advisory: <a href="mailto:itsankitkumar405@gmail.com" className="underline hover:text-rovelle-charcoal">itsankitkumar405@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}

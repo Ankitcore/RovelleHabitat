@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-slate: #657DA0;
+  --color-charcoal: #202A36;
+  --color-ivory: #F6F4EF;
+  --color-white: #FFFFFF;
+  --color-secondary-text: #68717C;
+  --color-border: #E2E5E9;
+  --color-tint-blue: #EEF2F8;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  color: var(--color-charcoal);
+  background-color: #FFFFFF;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F4EF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #657DA0;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #546A8B;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #657DA0;
+  color: #FFFFFF;
+}
