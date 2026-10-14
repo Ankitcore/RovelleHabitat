@@ -4,17 +4,8 @@ const path = require('path')
 
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
 
-const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
-  <rect width="64" height="64" rx="14" fill="#202A36" stroke="#657DA0" stroke-width="2.5" />
-  <!-- Bold Architectural 'R' Monogram -->
-  <!-- Left structural column -->
-  <rect x="14" y="14" width="10" height="36" rx="2" fill="#FFFFFF" />
-  <!-- Upper loop -->
-  <path d="M24 14 H38 C44 14 48 18 48 24 C48 30 44 34 38 34 H24 Z" fill="#657DA0" />
-  <rect x="24" y="21" width="12" height="6" rx="1" fill="#202A36" />
-  <!-- Angled architectural strut -->
-  <polygon points="32,32 44,50 34,50 24,35" fill="#FFFFFF" />
-</svg>`
+const svgPath = path.join(__dirname, '..', 'public', 'favicon.svg')
+const svgContent = fs.readFileSync(svgPath, 'utf8')
 
 function createIcoFromPngs(pngBuffers) {
   const count = pngBuffers.length
