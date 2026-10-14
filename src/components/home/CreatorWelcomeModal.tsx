@@ -147,7 +147,7 @@ export function CreatorWelcomeModal() {
                     LinkedIn Profile
                   </div>
                   <div className="text-xs text-rovelle-muted">
-                    linkedin.com/in/ankit-kumar
+                    linkedin.com/in/ankitcore
                   </div>
                 </div>
               </div>

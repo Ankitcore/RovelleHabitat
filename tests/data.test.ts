@@ -99,7 +99,7 @@ describe('Rovelle Habitat Data & Portfolio Integrity', () => {
     expect(siteConfig.brand.developerCredit).toBe('Designed and developed by Ankit Kumar.')
     expect(siteConfig.brand.developerName).toBe('Ankit Kumar')
     expect(siteConfig.brand.developerGithub).toBe('https://github.com/Ankitcore')
-    expect(siteConfig.brand.developerLinkedin).toBe('https://www.linkedin.com/in/ankit-kumar')
+    expect(siteConfig.brand.developerLinkedin).toBe('https://www.linkedin.com/in/ankitcore/')
     expect(siteConfig.contact.email).toBe('ankit.vzn@gmail.com')
     expect(siteConfig.contact.phone).toBe('+91 9876543210')
     expect(siteConfig.contact.address.formatted).toBe('Bokaro, Jharkhand 827010, India')
