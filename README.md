@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="public/images/brand/rovelle-habitat-logo.png" alt="Rovelle Habitat Brand Logo" width="560" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="public/images/brand/rovelle-habitat-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="public/images/brand/rovelle-habitat-logo-light.png">
+    <img alt="Rovelle Habitat Brand Logo" src="public/images/brand/rovelle-habitat-logo-dark.png" width="620">
+  </picture>
 </p>
 
 <p align="center">
