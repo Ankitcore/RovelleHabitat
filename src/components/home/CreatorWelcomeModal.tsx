@@ -60,7 +60,7 @@ export function CreatorWelcomeModal() {
       onClick={handleClose}
     >
       <div
-        className={`relative w-full max-w-lg overflow-hidden rounded-xs border border-rovelle-border bg-white shadow-2xl transition-all duration-300 transform ${
+        className={`relative w-full max-w-lg sm:max-w-xl overflow-hidden rounded-xs border border-rovelle-border bg-white shadow-2xl transition-all duration-300 transform ${
           isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-4 opacity-0'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -70,22 +70,21 @@ export function CreatorWelcomeModal() {
 
         {/* Modal Inner Container */}
         <div className="p-6 sm:p-8">
-          {/* Header Row */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-rovelle-slate">
-                <Compass className="h-3.5 w-3.5" />
-                <span>Rovelle Habitat</span>
-              </span>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-rovelle-muted">
-                Creator Profile
-              </span>
+          {/* Header Row: Brand Logo and Close Button */}
+          <div className="flex items-center justify-between gap-4 pb-4 border-b border-rovelle-border">
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/brand/rovelle-habitat-logo-light.png"
+                alt="Rovelle Habitat Brand Logo"
+                className="h-10 sm:h-12 w-auto max-w-[190px] sm:max-w-[220px] object-contain"
+              />
             </div>
 
             <button
               onClick={handleClose}
               type="button"
-              className="rounded-xs p-1.5 text-rovelle-muted transition-colors hover:bg-rovelle-ivory hover:text-rovelle-charcoal focus:outline-none focus:ring-2 focus:ring-rovelle-slate"
+              className="rounded-xs p-1.5 text-rovelle-muted transition-colors hover:bg-rovelle-ivory hover:text-rovelle-charcoal focus:outline-none focus:ring-2 focus:ring-rovelle-slate shrink-0"
               aria-label="Close welcome modal"
             >
               <X className="h-5 w-5" />
@@ -94,11 +93,24 @@ export function CreatorWelcomeModal() {
 
           {/* Main Statement & Editorial Content */}
           <div className="mt-5">
+            <div className="flex flex-wrap items-center gap-2 mb-2.5">
+              <span className="inline-flex items-center gap-1.5 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rovelle-slate">
+                <Compass className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                <span>Architectural Portfolio</span>
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rovelle-muted">
+                Creator Profile
+              </span>
+            </div>
+
             <h2
               id="creator-modal-title"
               className="text-2xl font-bold tracking-tight text-rovelle-charcoal sm:text-3xl leading-snug"
             >
-              This website is made by {siteConfig.brand.developerName}.
+              This website is made by{' '}
+              <span className="inline-block whitespace-nowrap rounded-xs bg-rovelle-tint-blue px-2.5 py-0.5 text-rovelle-slate font-extrabold border border-rovelle-slate/30 shadow-2xs">
+                {siteConfig.brand.developerName}
+              </span>
             </h2>
 
             <p className="mt-3 text-sm leading-relaxed text-rovelle-muted">
