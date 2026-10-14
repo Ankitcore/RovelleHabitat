@@ -69,21 +69,23 @@ export function CreatorWelcomeModal() {
 
         {/* Modal Inner Content */}
         <div className="p-4 sm:p-7">
-          {/* Header Row: Favicon SVG, Brand Logo & Close Button */}
+          {/* Header Row: Favicon SVG beside Rovelle Habitat & Close Button */}
           <div className="flex items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-rovelle-border">
-            <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/favicon.svg"
                 alt="Rovelle Habitat Favicon"
                 className="h-7 w-7 sm:h-8 sm:w-8 rounded-sm shadow-2xs shrink-0"
               />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/brand/rovelle-habitat-logo-light.png"
-                alt="Rovelle Habitat Brand Logo"
-                className="h-6 sm:h-9 w-auto max-w-[140px] sm:max-w-[190px] object-contain"
-              />
+              <div className="flex flex-col">
+                <span className="font-sans text-sm sm:text-base font-bold tracking-tight text-rovelle-charcoal leading-tight">
+                  Rovelle Habitat
+                </span>
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-rovelle-muted">
+                  Spaces designed for living
+                </span>
+              </div>
             </div>
 
             <button
