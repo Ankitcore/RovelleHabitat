@@ -8,6 +8,7 @@ import { Info, RotateCcw } from 'lucide-react'
 
 export function ResidencesClient() {
   const [propertyType, setPropertyType] = useState('all')
+  const [location, setLocation] = useState('all')
   const [bedrooms, setBedrooms] = useState('all')
   const [maxPrice, setMaxPrice] = useState(6000000)
 
@@ -17,21 +18,27 @@ export function ResidencesClient() {
       if (propertyType !== 'all' && property.propertyType !== propertyType) {
         return false
       }
+      // Location / Country filter
+      if (location !== 'all' && property.country !== location) {
+        return false
+      }
       // Bedrooms filter
       if (bedrooms !== 'all') {
         const bedNum = parseInt(bedrooms, 10)
         if (property.bedrooms < bedNum) return false
       }
-      // Price filter
-      if (property.price > maxPrice) {
+      // Price filter (normalized USD equivalent)
+      const effectivePrice = property.priceUsdEquivalent || property.price
+      if (effectivePrice > maxPrice) {
         return false
       }
       return true
     })
-  }, [propertyType, bedrooms, maxPrice])
+  }, [propertyType, location, bedrooms, maxPrice])
 
   const handleClearFilters = () => {
     setPropertyType('all')
+    setLocation('all')
     setBedrooms('all')
     setMaxPrice(6000000)
   }
@@ -50,6 +57,8 @@ export function ResidencesClient() {
       <ResidenceFilters
         propertyType={propertyType}
         onPropertyTypeChange={setPropertyType}
+        location={location}
+        onLocationChange={setLocation}
         bedrooms={bedrooms}
         onBedroomsChange={setBedrooms}
         maxPrice={maxPrice}

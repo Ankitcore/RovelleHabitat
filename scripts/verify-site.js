@@ -168,12 +168,25 @@ async function runVerification() {
   await page.select('#filterType', 'Penthouse')
   await sleep(300)
   const cardCount = await page.$$eval('article', (cards) => cards.length)
-  console.log(`[Interaction] Filtered Residences Count for Penthouse: ${cardCount} (Expected: 1)`)
-  if (cardCount !== 1) {
-    console.error('FAIL: Filter did not yield exactly 1 penthouse')
+  console.log(`[Interaction] Filtered Residences Count for Penthouse: ${cardCount} (Expected: 3)`)
+  if (cardCount !== 3) {
+    console.error(`FAIL: Filter did not yield exactly 3 penthouses (found ${cardCount})`)
     allPassed = false
   } else {
-    console.log('✓ Property filter genuinely updates displayed count.')
+    console.log('✓ Property type filter genuinely updates displayed count to 3 penthouses.')
+  }
+
+  // Location filter test
+  await page.select('#filterType', 'all')
+  await page.select('#filterLocation', 'India')
+  await sleep(300)
+  const indiaCardCount = await page.$$eval('article', (cards) => cards.length)
+  console.log(`[Interaction] Filtered Residences Count for India: ${indiaCardCount} (Expected: 8)`)
+  if (indiaCardCount !== 8) {
+    console.error(`FAIL: Location filter did not yield exactly 8 Indian residences (found ${indiaCardCount})`)
+    allPassed = false
+  } else {
+    console.log('✓ Location filter genuinely updates displayed count to 8 Indian residences.')
   }
   await page.screenshot({ path: path.join(screenshotDir, '03-residences-filtered.png') })
 
@@ -199,6 +212,15 @@ async function runVerification() {
   // E. Property Detail Page
   await page.goto(`${BASE_URL}/residences/the-monolith-residence`, { waitUntil: 'networkidle0' })
   await page.screenshot({ path: path.join(screenshotDir, '05-residence-detail.png') })
+
+  // F. Indian Residence Detail Page
+  await page.goto(`${BASE_URL}/residences/the-chotanagpur-plateau-residence`, { waitUntil: 'networkidle0' })
+  const indianTitle = await page.$eval('h1', el => el.textContent)
+  console.log(`[Indian Residence Verification] Detail Title: ${indianTitle}`)
+  if (!indianTitle.includes('The Chotanagpur Plateau Residence')) {
+    allPassed = false
+  }
+  await page.screenshot({ path: path.join(screenshotDir, '06-indian-residence-detail.png') })
 
   console.log('\n--- VERIFICATION SUMMARY ---')
   console.log(`Total Viewport-Route checks: ${results.overflowChecks.length}`)

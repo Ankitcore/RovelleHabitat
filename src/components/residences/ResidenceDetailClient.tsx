@@ -91,7 +91,7 @@ export function ResidenceDetailClient({
               </span>
               <span className="flex items-center gap-1 text-rovelle-muted">
                 <MapPin className="h-3.5 w-3.5 text-rovelle-slate" />
-                {property.address}, {property.city}, {property.region} {property.postalCode}
+                {property.address}, {property.city}, {property.region}{property.country ? `, ${property.country}` : ''} {property.postalCode}
               </span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-rovelle-charcoal sm:text-4xl lg:text-5xl">
@@ -107,9 +107,16 @@ export function ResidenceDetailClient({
               <span className="block text-[11px] font-mono uppercase text-rovelle-muted">
                 Offering Price
               </span>
-              <span className="text-2xl sm:text-3xl font-bold text-rovelle-charcoal">
-                {formatCurrency(property.price)}
-              </span>
+              <div className="flex flex-col lg:items-end">
+                <span className="text-2xl sm:text-3xl font-bold text-rovelle-charcoal">
+                  {formatCurrency(property.price, property.currency)}
+                </span>
+                {property.currency === 'INR' && property.priceUsdEquivalent && (
+                  <span className="text-xs font-mono text-rovelle-muted">
+                    Approx. ${(property.priceUsdEquivalent / 1000000).toFixed(2)}M USD
+                  </span>
+                )}
+              </div>
             </div>
             <button
               type="button"

@@ -49,7 +49,7 @@ export function ResidenceCard({ property }: ResidenceCardProps) {
           <div className="flex items-center gap-1.5 text-xs text-rovelle-muted">
             <MapPin className="h-3.5 w-3.5 shrink-0 text-rovelle-slate" />
             <span>
-              {property.city}, {property.region}
+              {property.city}, {property.country ? `${property.region}, ${property.country}` : property.region}
             </span>
           </div>
 
@@ -91,9 +91,16 @@ export function ResidenceCard({ property }: ResidenceCardProps) {
           <div className="flex items-center justify-between">
             <div>
               <span className="block text-[10px] font-mono uppercase text-rovelle-muted">Offering</span>
-              <span className="text-base font-bold text-rovelle-charcoal">
-                {formatCurrency(property.price)}
-              </span>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-base font-bold text-rovelle-charcoal">
+                  {formatCurrency(property.price, property.currency)}
+                </span>
+                {property.currency === 'INR' && property.priceUsdEquivalent && (
+                  <span className="text-[11px] font-mono text-rovelle-muted">
+                    (~${(property.priceUsdEquivalent / 1000000).toFixed(2)}M)
+                  </span>
+                )}
+              </div>
             </div>
             <Link
               href={`/residences/${property.slug}`}

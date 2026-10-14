@@ -35,6 +35,9 @@ export interface Property {
   propertyType: PropertyType
   status: PropertyStatus
   price: number
+  currency?: 'USD' | 'INR'
+  priceUsdEquivalent?: number
+  country?: string
   bedrooms: number
   bathrooms: number
   areaSqFt: number

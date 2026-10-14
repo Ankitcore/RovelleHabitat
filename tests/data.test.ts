@@ -5,7 +5,7 @@ import { siteConfig } from '../src/data/siteConfig'
 
 describe('Rovelle Habitat Data & Portfolio Integrity', () => {
   it('contains verified properties with required architectural attributes', () => {
-    expect(properties.length).toBeGreaterThanOrEqual(4)
+    expect(properties.length).toBe(12)
 
     properties.forEach((property) => {
       expect(property.id).toBeDefined()
@@ -21,7 +21,33 @@ describe('Rovelle Habitat Data & Portfolio Integrity', () => {
       expect(property.floorPlan).toBeDefined()
       expect(property.floorPlan.rooms.length).toBeGreaterThan(0)
       expect(property.verifiedAmenityIds.length).toBeGreaterThan(0)
+      expect(property.country).toBeDefined()
     })
+  })
+
+  it('contains 3 residences per architectural typology', () => {
+    const villas = properties.filter((p) => p.propertyType === 'Villa')
+    const penthouses = properties.filter((p) => p.propertyType === 'Penthouse')
+    const pavilions = properties.filter((p) => p.propertyType === 'Residence')
+    const townhouses = properties.filter((p) => p.propertyType === 'Townhome')
+
+    expect(villas.length).toBe(3)
+    expect(penthouses.length).toBe(3)
+    expect(pavilions.length).toBe(3)
+    expect(townhouses.length).toBe(3)
+  })
+
+  it('includes authentic Indian residences across major architectural centers', () => {
+    const indianProperties = properties.filter((p) => p.country === 'India')
+    expect(indianProperties.length).toBe(8)
+
+    const cities = indianProperties.map((p) => p.city)
+    expect(cities).toContain('Alibaug')
+    expect(cities).toContain('Assagao')
+    expect(cities).toContain('Mumbai')
+    expect(cities).toContain('Bengaluru')
+    expect(cities).toContain('Gurugram')
+    expect(cities).toContain('Bokaro Steel City')
   })
 
   it('retrieves correct property by slug', () => {
@@ -30,6 +56,11 @@ describe('Rovelle Habitat Data & Portfolio Integrity', () => {
     expect(prop).toBeDefined()
     expect(prop?.title).toBe('The Monolith Residence')
     expect(prop?.propertyType).toBe('Villa')
+
+    const indianProp = getPropertyBySlug('the-chotanagpur-plateau-residence')
+    expect(indianProp).toBeDefined()
+    expect(indianProp?.city).toBe('Bokaro Steel City')
+    expect(indianProp?.currency).toBe('INR')
   })
 
   it('returns undefined for invalid slugs', () => {
@@ -39,10 +70,19 @@ describe('Rovelle Habitat Data & Portfolio Integrity', () => {
 
   it('provides all slugs for static site generation', () => {
     const slugs = getAllPropertySlugs()
+    expect(slugs.length).toBe(12)
     expect(slugs).toContain('the-monolith-residence')
     expect(slugs).toContain('the-atrium-penthouse')
     expect(slugs).toContain('the-courtyard-house')
     expect(slugs).toContain('the-marina-terrace')
+    expect(slugs).toContain('the-alibaug-basalt-villa')
+    expect(slugs).toContain('the-goa-laterite-sanctuary')
+    expect(slugs).toContain('the-worli-seaface-penthouse')
+    expect(slugs).toContain('the-indiranagar-canopy-penthouse')
+    expect(slugs).toContain('the-aravali-stone-pavilion')
+    expect(slugs).toContain('the-chotanagpur-plateau-residence')
+    expect(slugs).toContain('the-bandra-mews-townhouse')
+    expect(slugs).toContain('the-koramangala-garden-townhouse')
   })
 
   it('master amenities list is valid and structured', () => {

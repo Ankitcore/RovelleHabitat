@@ -6,6 +6,8 @@ import { Filter, X } from 'lucide-react'
 interface ResidenceFiltersProps {
   propertyType: string
   onPropertyTypeChange: (type: string) => void
+  location: string
+  onLocationChange: (loc: string) => void
   bedrooms: string
   onBedroomsChange: (beds: string) => void
   maxPrice: number
@@ -18,6 +20,8 @@ interface ResidenceFiltersProps {
 export function ResidenceFilters({
   propertyType,
   onPropertyTypeChange,
+  location,
+  onLocationChange,
   bedrooms,
   onBedroomsChange,
   maxPrice,
@@ -26,7 +30,7 @@ export function ResidenceFilters({
   resultCount,
   totalCount,
 }: ResidenceFiltersProps) {
-  const isFiltered = propertyType !== 'all' || bedrooms !== 'all' || maxPrice < 6000000
+  const isFiltered = propertyType !== 'all' || location !== 'all' || bedrooms !== 'all' || maxPrice < 6000000
 
   return (
     <div className="rounded-xs border border-rovelle-border bg-white p-6 shadow-xs">
@@ -54,7 +58,7 @@ export function ResidenceFilters({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Property Type Filter */}
         <div>
           <label htmlFor="filterType" className="block text-xs font-semibold uppercase tracking-wider text-rovelle-charcoal mb-2">
@@ -70,7 +74,24 @@ export function ResidenceFilters({
             <option value="Villa">Villa Residences</option>
             <option value="Penthouse">Penthouses</option>
             <option value="Residence">Pavilion Residences</option>
-            <option value="Townhome">Townhomes</option>
+            <option value="Townhome">Townhouses &amp; Townhomes</option>
+          </select>
+        </div>
+
+        {/* Location Filter */}
+        <div>
+          <label htmlFor="filterLocation" className="block text-xs font-semibold uppercase tracking-wider text-rovelle-charcoal mb-2">
+            Region / Location
+          </label>
+          <select
+            id="filterLocation"
+            value={location}
+            onChange={(e) => onLocationChange(e.target.value)}
+            className="w-full rounded-xs border border-rovelle-border bg-white px-3 py-2 text-xs text-rovelle-charcoal transition-colors hover:border-rovelle-muted focus:outline-none focus:ring-1 focus:ring-rovelle-slate"
+          >
+            <option value="all">All Regions (Global &amp; India)</option>
+            <option value="India">India (Alibaug, Goa, Mumbai, Bengaluru, Bokaro, NCR)</option>
+            <option value="United States">United States (San Francisco)</option>
           </select>
         </div>
 
@@ -95,7 +116,7 @@ export function ResidenceFilters({
         <div>
           <div className="flex justify-between items-center mb-2">
             <label htmlFor="filterPrice" className="text-xs font-semibold uppercase tracking-wider text-rovelle-charcoal">
-              Maximum Price
+              Max Price (USD Eq.)
             </label>
             <span className="font-mono text-xs font-semibold text-rovelle-slate">
               ${(maxPrice / 1000000).toFixed(2)}M
@@ -104,7 +125,7 @@ export function ResidenceFilters({
           <input
             type="range"
             id="filterPrice"
-            min={2500000}
+            min={1000000}
             max={6000000}
             step={250000}
             value={maxPrice}
@@ -112,7 +133,7 @@ export function ResidenceFilters({
             className="w-full accent-rovelle-slate cursor-pointer"
           />
           <div className="flex justify-between text-[10px] text-rovelle-muted mt-1 font-mono">
-            <span>$2.50M</span>
+            <span>$1.00M</span>
             <span>$6.00M</span>
           </div>
         </div>
