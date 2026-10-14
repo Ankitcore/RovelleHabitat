@@ -35,6 +35,7 @@
 - [Tech Stack & Architecture](#tech-stack--architecture)
 - [Verification & Testing Standards](#verification--testing-standards)
 - [Quick Start & Local Development](#quick-start--local-development)
+- [Deploy to Vercel](#deploy-to-vercel)
 - [Credits & Governance](#credits--governance)
 
 ---
@@ -299,6 +300,22 @@ npm run build
 # Start production server
 npm run start
 ```
+
+---
+
+## Deploy to Vercel
+
+### One-Click Deployment
+Deploy Rovelle Habitat instantly to Vercel with automatic continuous integration:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAnkitcore%2FRovelleHabitat)
+
+### Steps to Deploy via Vercel Dashboard
+1. Go to [vercel.com/new](https://vercel.com/new) and log in with your GitHub account (**Ankitcore**).
+2. Select **RovelleHabitat** from your repository list and click **Import**.
+3. Leave the default settings (Next.js is automatically detected with zero configuration needed).
+4. Click **Deploy**. Vercel will build the 27 static routes in under 60 seconds and assign a production URL (e.g., `https://rovelle-habitat.vercel.app`).
+5. Any subsequent `git push` to `main` will automatically trigger a fresh deployment with instant cache invalidation.
 
 ---
 
