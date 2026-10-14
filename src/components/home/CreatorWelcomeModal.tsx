@@ -9,11 +9,10 @@ export function CreatorWelcomeModal() {
   const [isRendered, setIsRendered] = useState(false)
 
   useEffect(() => {
-    // Show modal on homepage open
     setIsRendered(true)
     const timer = setTimeout(() => {
       setIsOpen(true)
-    }, 200)
+    }, 150)
 
     return () => clearTimeout(timer)
   }, [])
@@ -42,7 +41,7 @@ export function CreatorWelcomeModal() {
     setIsOpen(false)
     setTimeout(() => {
       setIsRendered(false)
-    }, 300)
+    }, 250)
   }
 
   if (!isRendered) return null
@@ -52,7 +51,7 @@ export function CreatorWelcomeModal() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="creator-modal-title"
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 transition-all duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 transition-all duration-300 ${
         isOpen
           ? 'bg-rovelle-charcoal/70 backdrop-blur-sm opacity-100'
           : 'bg-transparent backdrop-blur-none opacity-0 pointer-events-none'
@@ -60,24 +59,24 @@ export function CreatorWelcomeModal() {
       onClick={handleClose}
     >
       <div
-        className={`relative w-full max-w-lg sm:max-w-xl overflow-hidden rounded-xs border border-rovelle-border bg-white shadow-2xl transition-all duration-300 transform ${
-          isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-4 opacity-0'
+        className={`relative w-full max-w-[360px] sm:max-w-xl overflow-hidden rounded-xs border border-rovelle-border bg-white shadow-2xl transition-all duration-300 transform ${
+          isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-3 opacity-0'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Architectural Accent Bar */}
-        <div className="h-1.5 w-full bg-rovelle-slate" />
+        <div className="h-1 sm:h-1.5 w-full bg-rovelle-slate" />
 
-        {/* Modal Inner Container */}
-        <div className="p-6 sm:p-8">
-          {/* Header Row: Brand Logo and Close Button */}
-          <div className="flex items-center justify-between gap-4 pb-4 border-b border-rovelle-border">
-            <div className="flex items-center gap-3">
+        {/* Modal Inner Content */}
+        <div className="p-4 sm:p-7">
+          {/* Header Row: Official Logo & Close Button */}
+          <div className="flex items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-rovelle-border">
+            <div className="flex items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/brand/rovelle-habitat-logo-light.png"
                 alt="Rovelle Habitat Brand Logo"
-                className="h-10 sm:h-12 w-auto max-w-[190px] sm:max-w-[220px] object-contain"
+                className="h-7 sm:h-11 w-auto max-w-[160px] sm:max-w-[220px] object-contain"
               />
             </div>
 
@@ -87,112 +86,115 @@ export function CreatorWelcomeModal() {
               className="rounded-xs p-1.5 text-rovelle-muted transition-colors hover:bg-rovelle-ivory hover:text-rovelle-charcoal focus:outline-none focus:ring-2 focus:ring-rovelle-slate shrink-0"
               aria-label="Close welcome modal"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
 
-          {/* Main Statement & Editorial Content */}
-          <div className="mt-5">
-            <div className="flex flex-wrap items-center gap-2 mb-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rovelle-slate">
-                <Compass className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                <span>Architectural Portfolio</span>
+          {/* Eyebrow & Main Statement */}
+          <div className="mt-3.5 sm:mt-5">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-rovelle-slate">
+                <Compass className="h-3 w-3" />
+                <span>Architectural Showcase</span>
               </span>
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rovelle-muted">
-                Creator Profile
+                Creator Spotlight
               </span>
             </div>
 
             <h2
               id="creator-modal-title"
-              className="text-2xl font-bold tracking-tight text-rovelle-charcoal sm:text-3xl leading-snug"
+              className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-rovelle-charcoal leading-snug"
             >
               This website is made by{' '}
-              <span className="inline-block whitespace-nowrap rounded-xs bg-rovelle-tint-blue px-2.5 py-0.5 text-rovelle-slate font-extrabold border border-rovelle-slate/30 shadow-2xs">
+              <span className="inline-block whitespace-nowrap rounded-xs bg-rovelle-tint-blue px-2 py-0.5 text-rovelle-slate font-extrabold border border-rovelle-slate/30 shadow-2xs">
                 {siteConfig.brand.developerName}
               </span>
             </h2>
 
-            <p className="mt-3 text-sm leading-relaxed text-rovelle-muted">
-              Welcome to Rovelle Habitat, a curated residential property showcase and architectural web experience presenting contemporary residences with spatial precision, natural illumination, and verified CAD floor plans.
+            {/* Desktop Editorial Subtitle */}
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-rovelle-muted">
+              A curated residential property showcase presenting contemporary architecture with spatial precision, natural illumination, and verified CAD floor plans.
             </p>
           </div>
 
-          {/* Social Profiles & Developer Links */}
-          <div className="mt-6 space-y-3">
-            {/* GitHub Profile */}
-            <a
-              href={siteConfig.brand.developerGithub}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xs border border-rovelle-border bg-rovelle-ivory/60 p-3.5 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-tint-blue/80"
-            >
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xs bg-rovelle-charcoal text-white transition-colors group-hover:bg-rovelle-slate">
-                  <Github className="h-5 w-5" />
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold uppercase tracking-wider text-rovelle-charcoal">
-                    GitHub Profile
+          {/* Social Profiles & Developer Links (Compact Grid on Mobile, Refined on Web) */}
+          <div className="mt-3.5 sm:mt-5 space-y-2.5">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+              {/* GitHub Link */}
+              <a
+                href={siteConfig.brand.developerGithub}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-xs border border-rovelle-border bg-rovelle-ivory/60 p-2.5 sm:p-3.5 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-tint-blue/80"
+              >
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xs bg-rovelle-charcoal text-white transition-colors group-hover:bg-rovelle-slate shrink-0">
+                    <Github className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
-                  <div className="text-xs text-rovelle-muted">
-                    github.com/Ankitcore
+                  <div className="text-left overflow-hidden">
+                    <div className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-rovelle-charcoal truncate">
+                      GitHub
+                    </div>
+                    <div className="text-[10px] sm:text-xs text-rovelle-muted truncate">
+                      @Ankitcore
+                    </div>
                   </div>
                 </div>
-              </div>
-              <ExternalLink className="h-4 w-4 text-rovelle-muted transition-colors group-hover:text-rovelle-slate" />
-            </a>
+                <ExternalLink className="h-3.5 w-3.5 text-rovelle-muted group-hover:text-rovelle-slate shrink-0 hidden xs:block" />
+              </a>
 
-            {/* LinkedIn Profile */}
-            <a
-              href={siteConfig.brand.developerLinkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xs border border-rovelle-border bg-rovelle-ivory/60 p-3.5 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-tint-blue/80"
-            >
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xs bg-[#0A66C2] text-white transition-opacity group-hover:opacity-90">
-                  <Linkedin className="h-5 w-5" />
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold uppercase tracking-wider text-rovelle-charcoal">
-                    LinkedIn Profile
+              {/* LinkedIn Link */}
+              <a
+                href={siteConfig.brand.developerLinkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-xs border border-rovelle-border bg-rovelle-ivory/60 p-2.5 sm:p-3.5 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-tint-blue/80"
+              >
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xs bg-[#0A66C2] text-white transition-opacity group-hover:opacity-90 shrink-0">
+                    <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
-                  <div className="text-xs text-rovelle-muted">
-                    linkedin.com/in/ankitcore
+                  <div className="text-left overflow-hidden">
+                    <div className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-rovelle-charcoal truncate">
+                      LinkedIn
+                    </div>
+                    <div className="text-[10px] sm:text-xs text-rovelle-muted truncate">
+                      @ankitcore
+                    </div>
                   </div>
                 </div>
-              </div>
-              <ExternalLink className="h-4 w-4 text-rovelle-muted transition-colors group-hover:text-rovelle-slate" />
-            </a>
+                <ExternalLink className="h-3.5 w-3.5 text-rovelle-muted group-hover:text-rovelle-slate shrink-0 hidden xs:block" />
+              </a>
+            </div>
 
-            {/* GitHub Repository Reference */}
+            {/* Source Code Repository (Compact Banner) */}
             <a
               href={siteConfig.brand.repositoryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xs border border-dashed border-rovelle-border bg-white px-3.5 py-2.5 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-ivory/40"
+              className="group flex items-center justify-between rounded-xs border border-dashed border-rovelle-border bg-white px-3 py-2 transition-all duration-150 hover:border-rovelle-slate hover:bg-rovelle-ivory/40"
             >
-              <div className="flex items-center gap-2 text-xs font-medium text-rovelle-charcoal">
-                <Code2 className="h-3.5 w-3.5 text-rovelle-slate" />
-                <span>Source Code Repository: Ankitcore/RovelleHabitat</span>
+              <div className="flex items-center gap-2 text-[11px] sm:text-xs font-medium text-rovelle-charcoal truncate">
+                <Code2 className="h-3.5 w-3.5 text-rovelle-slate shrink-0" />
+                <span className="truncate">Repository: Ankitcore/RovelleHabitat</span>
               </div>
-              <ExternalLink className="h-3.5 w-3.5 text-rovelle-muted group-hover:text-rovelle-slate" />
+              <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-rovelle-muted group-hover:text-rovelle-slate shrink-0" />
             </a>
           </div>
 
-          {/* Action Button & Contact Footer */}
-          <div className="mt-6 pt-5 border-t border-rovelle-border">
+          {/* Action CTA & Contact Footer */}
+          <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-rovelle-border">
             <button
               onClick={handleClose}
               type="button"
-              className="flex w-full items-center justify-center gap-2 rounded-xs bg-rovelle-charcoal px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors duration-150 hover:bg-rovelle-slate focus:outline-none focus:ring-2 focus:ring-rovelle-slate focus:ring-offset-2"
+              className="flex w-full items-center justify-center gap-2 rounded-xs bg-rovelle-charcoal px-4 py-2.5 sm:py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors duration-150 hover:bg-rovelle-slate focus:outline-none focus:ring-2 focus:ring-rovelle-slate focus:ring-offset-2"
             >
               <span>Explore Rovelle Habitat</span>
               <ArrowRight className="h-4 w-4" />
             </button>
 
-            <div className="mt-3 flex items-center justify-between text-[11px] text-rovelle-muted">
+            <div className="mt-2.5 hidden sm:flex items-center justify-between text-[11px] text-rovelle-muted">
               <span>{siteConfig.contact.address.formatted}</span>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
