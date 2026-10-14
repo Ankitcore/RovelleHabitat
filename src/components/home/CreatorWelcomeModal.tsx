@@ -69,14 +69,20 @@ export function CreatorWelcomeModal() {
 
         {/* Modal Inner Content */}
         <div className="p-4 sm:p-7">
-          {/* Header Row: Official Logo & Close Button */}
+          {/* Header Row: Favicon SVG, Brand Logo & Close Button */}
           <div className="flex items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-rovelle-border">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/favicon.svg"
+                alt="Rovelle Habitat Favicon"
+                className="h-7 w-7 sm:h-8 sm:w-8 rounded-sm shadow-2xs shrink-0"
+              />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/brand/rovelle-habitat-logo-light.png"
                 alt="Rovelle Habitat Brand Logo"
-                className="h-7 sm:h-11 w-auto max-w-[160px] sm:max-w-[220px] object-contain"
+                className="h-6 sm:h-9 w-auto max-w-[140px] sm:max-w-[190px] object-contain"
               />
             </div>
 
@@ -93,12 +99,17 @@ export function CreatorWelcomeModal() {
           {/* Eyebrow & Main Statement */}
           <div className="mt-3.5 sm:mt-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center gap-1 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-rovelle-slate">
-                <Compass className="h-3 w-3" />
-                <span>Architectural Showcase</span>
+              <span className="inline-flex items-center gap-1.5 rounded-xs border border-rovelle-slate/30 bg-rovelle-tint-blue px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rovelle-slate">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/favicon.svg"
+                  alt="Rovelle Habitat Favicon"
+                  className="h-3.5 w-3.5 rounded-[2px] shrink-0"
+                />
+                <span>Rovelle Habitat</span>
               </span>
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rovelle-muted">
-                Creator Spotlight
+                Creator Profile
               </span>
             </div>
 
